@@ -1,50 +1,103 @@
-# Welcome to your Expo app 👋
+# Snake Retro (React Native + Expo)
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Este es un pequeño juego de Snake con estilo retro hecho con [React Native](https://reactnative.dev/) y [Expo](https://expo.dev/).  
+Incluye:
+- Estilo de interfaz de los 80 (colores verde/negro tipo arcade).
+- Control por deslizamiento (PanGestureHandler) para mover la serpiente.
+- Uso de la librería [Zustand](https://github.com/pmndrs/zustand) para estado global.
+- Fuentes retro (Press Start 2P) cargadas con `expo-font` y `@expo-google-fonts/press-start-2p`.
 
-## Get started
+## Requisitos
 
-1. Install dependencies
+- **Node.js** 16 o superior (o la versión compatible con tu Expo).
+- **Expo CLI local** (usa `npx expo` en lugar de la CLI global de expo).
+- [Git](https://git-scm.com/) (para clonar el repositorio).
+
+> Si deseas usar otro gestor de paquetes como `yarn` o `bun`, puedes hacerlo, pero asegúrate de instalar las dependencias de manera compatible con Expo.
+
+## Instalación
+
+1. **Clona el repositorio**:
+
+   ```bash
+   git clone https://github.com/tu-usuario/tu-repo-snake.git
+   cd tu-repo-snake
+   ```
+
+2. **Instala las dependencias**:
+
+   Con npm:
 
    ```bash
    npm install
    ```
 
-2. Start the app
+   O con yarn:
 
    ```bash
-    npx expo start
+   yarn
    ```
 
-In the output, you'll find options to open the app in a
+   O con bun (si lo usas):
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+   ```bash
+   bun install
+   ```
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+3. **Inicia la app**:
 
-## Get a fresh project
+   ```bash
+   npx expo start
+   ```
 
-When you're ready, run:
+   Luego elige “run on Android” o “run on iOS” en la interfaz web de Expo, o bien escanea el código QR con la app Expo Go (si estás en un dispositivo físico).
 
-```bash
-npm run reset-project
+## Estructura de Directorios
+
+```plaintext
+.
+├── app
+│   ├── _layout.tsx      // Carga de fuentes y envoltura global
+│   └── index.tsx        // Componente principal del juego
+├── components
+│   ├── Header.tsx       // Barra superior retro
+│   ├── Score.tsx        // Texto de puntaje
+│   ├── Snake.tsx        // Renderiza la serpiente
+│   ├── Food.tsx         // Renderiza la manzana
+│   └── styles
+│       └── colors.ts    // Paleta de colores
+├── store
+│   └── store.ts         // Estado global (Zustand) con lógica de juego
+├── utils                // Utilidades como checkGameOver, randomFoodPosition, etc.
+├── assets               // Imágenes, fuentes, etc.
+├── package.json
+└── README.md
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## Cómo Jugar
 
-## Learn more
+1. **Iniciar el juego**: Al abrir la app, verás la serpiente en el área de juego.
+2. **Mover la serpiente**: Desliza (swipe) con el dedo en la pantalla en la dirección que deseas mover la serpiente (arriba, abajo, izquierda o derecha).
+3. **Pausa**: Toca el ícono de pausa/play en la esquina superior izquierda.
+4. **Reiniciar**: Toca el ícono de refresh para reiniciar la partida.
+5. **Objetivo**: Comer las manzanas para aumentar el puntaje. Evita chocar contra los bordes o tu propio cuerpo.
 
-To learn more about developing your project with Expo, look at the following resources:
+## Notas
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+- El juego ajusta el área de juego según el tamaño disponible en pantalla, usando `onLayout` para medir el contenedor.
+- Si la serpiente o la manzana se salen de los límites, se recortan con `overflow: hidden`.
+- Se incluye un borde verde retro y un header con estilo arcade.
 
-## Join the community
+## Créditos
 
-Join our community of developers creating universal apps.
+- Iconos de retro design: FontAwesome.
+- Fuente Press Start 2P de Google Fonts.
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## Licencia
+
+MIT License
+
+
+
+
+¡Disfruta tu partida retro de Snake!
